@@ -7,7 +7,7 @@ function parseContestDetails($, contestRow) {
   const endTime = new Date(details.eq(3).attr("data-endtime")).getTime() / 1000;
 
   return {
-    name: details.eq(1).text(),
+    name: details.eq(1).text().trim(),
     url: `http://www.codechef.com${details.eq(1).find('a').attr('href')}`,
     platform: 'codechef',
     startTime,
