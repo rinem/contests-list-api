@@ -7,6 +7,8 @@ const hackerearth = require('./parsers/hackerearth');
 const hackerrank = require('./parsers/hackerrank');
 const topcoder = require('./parsers/topcoder');
 const codechef = require('./parsers/codechef');
+const kaggle = require('./parsers/kaggle');
+const leetcode = require('./parsers/leetcode');
 
 const runner = () => axios.all([
   codeforces(),
@@ -14,6 +16,8 @@ const runner = () => axios.all([
   hackerrank(),
   topcoder(),
   codechef(),
+  kaggle(),
+  leetcode()
 ])
   .then((contestsByPlatform) => {
     const contests = flat(contestsByPlatform.filter(it => Array.isArray(it)));
