@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { kaggleUsername, kaggleApiKey } = require("../../secrets.json");
+
 const { parserErrorHandler, getCurrentTimeInSeconds } = require('./../utils');
 
 const KAGGLE_API_URL = "https://www.kaggle.com/api/v1/competitions/list";
@@ -18,8 +18,8 @@ const convertToStandardContest = contest => ({
 const kaggle = () => axios.get(KAGGLE_API_URL, {
     timeout: 15000,
     auth: {
-      username: kaggleUsername,
-      password: kaggleApiKey,
+      username: process.env.kaggleUsername,
+      password: process.env.kaggleApiKey,
     },
   })
   .then(response => response.data
